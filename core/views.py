@@ -3,6 +3,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
+def homePage(req):
+    return render(req, 'homePage.html')
+
+
 def loginUser(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -21,7 +25,3 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect('home')
-
-
-def homePage(req):
-    return render(req, 'homePage.html')

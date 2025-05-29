@@ -1,0 +1,9 @@
+{% extends "baseLayout.html" %} {% block content %}
+<h1>Jokes</h1>
+<div>
+  {% for joke in jokes%}
+  <a href="{% url 'viewJoke' jokeId=joke.id     %}">{{joke.setup}} ...</a>
+  {% endfor %}
+</div>
+<a href="{% url 'createJoke' %}">Create joke</a>
+{% endblock %}

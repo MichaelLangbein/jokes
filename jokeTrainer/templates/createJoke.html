@@ -1,0 +1,14 @@
+{% extends 'baseLayout.html' %} {% block content %}
+<form action="{% url 'createJoke' %}" method="POST">
+  {% csrf_token %}
+  <div>
+    <label for="setup">setup</label>
+    <input type="text" name="setup" />
+  </div>
+  <div>
+    <label for="punchline">punchline</label>
+    <input type="text" name="punchline" />
+  </div>
+  <input type="submit" />
+</form>
+{% endblock %}

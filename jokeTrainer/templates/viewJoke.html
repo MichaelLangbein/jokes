@@ -1,0 +1,10 @@
+{% extends 'baseLayout.html' %} {% block content %}
+<div>
+  <div><p>{{ joke.setup }}</p></div>
+  <div><p>{{ joke.punchline }}</p></div>
+</div>
+<div>
+  <p>Average rating: {{ meanRating }}</p>
+</div>
+<a href="{% url 'listJokes' %}">Back</a>
+{% endblock %}
