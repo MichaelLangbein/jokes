@@ -1,0 +1,16 @@
+{% extends 'baseLayout.html' %} {% block content %}
+
+<form action="{% url 'createCard' deckId=deck.id %}" method="POST">
+  {% csrf_token %}
+  <div>
+    <label for="question">Question:</label>
+    <input type="text" name="question" />
+  </div>
+  <div>
+    <label for="answer">Answer:</label>
+    <input type="text" name="answer" />
+  </div>
+  <input type="submit" value="OK" />
+</form>
+
+{% endblock content %}

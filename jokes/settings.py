@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
-    'jokeTrainer.apps.JoketrainerConfig'
+    'jokeTrainer.apps.JoketrainerConfig',
+    'flashCards.apps.FlashcardsConfig'
 ]
 
 MIDDLEWARE = [

@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from .views import listDecks, createDeck, showDeck, createCard, showCard, editCard, deleteCard
 
 urlpatterns = [
-    path('', include('core.urls')),
-    path('admin/', admin.site.urls),
-    path('jokes/', include('jokeTrainer.urls')),
-    path('flashCards/', include('flashCards.urls')),
+    path('', listDecks, name='listDecks'),
+    path('createDeck', createDeck, name='createDeck'),
+    path('<int:deckId>', showDeck, name='showDeck'),
+    path('<int:deckId>/createCard', createCard, name='createCard'),
+    path('<int:deckId>/card/<int:cardId>', showCard, name='showCard'),
+    path('<int:deckId>/card/<int:cardId>/edit', editCard, name='editCard'),
+    path('<int:deckId>/card/<int:cardId>/delete', deleteCard, name='deleteCard'),
 ]

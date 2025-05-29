@@ -1,0 +1,8 @@
+{% extends 'baseLayout.html' %} {% block content %}
+<h2>{{deck.name}}</h2>
+<p>{{ card.question }}</p>
+<p>{{ card.answer }}</p>
+<a href="{% url 'showDeck' deckId=deck.id %}">Back</a>
+<a href="{% url 'editCard' deckId=deck.id cardId=card.id %}">edit</a>
+<a href="{% url 'deleteCard' deckId=deck.id cardId=card.id %}">delete</a>
+{% endblock %}

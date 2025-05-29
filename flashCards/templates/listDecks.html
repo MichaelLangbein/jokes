@@ -1,0 +1,20 @@
+{% extends 'baseLayout.html' %} {% block content %}
+<h1>Decks</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Details</th>
+  </tr>
+  {% for deck in decks %}
+  <tr>
+    <td>{{ deck.name }}</td>
+    <td><a href="{% url 'showDeck' deck.id %}">details</a></td>
+  </tr>
+  {% endfor %}
+</table>
+
+<div>
+  <a href="{% url 'createDeck' %}">Create deck</a>
+</div>
+{% endblock %}

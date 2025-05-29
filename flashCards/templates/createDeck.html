@@ -1,0 +1,12 @@
+{% extends 'baseLayout.html' %} {% block content %}
+
+<form action="{% url 'createDeck' %}" method="POST">
+  {% csrf_token %}
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" name="name" />
+  </div>
+  <input type="submit" value="OK" />
+</form>
+
+{% endblock %}
