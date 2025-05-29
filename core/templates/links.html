@@ -7,10 +7,15 @@
     a {
       color: var(--white);
     }
+    a.active {
+      color: var(--primary-light);
+    }
   }
 </style>
 
 <div class="links">
-  <a href="{% url 'home' %}">Home</a>
-  <a href="{% url 'listJokes' %}">Jokes</a>
+  <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"> Home </a>
+  <a href="{% url 'listJokes' %}" class="{% if request.resolver_match.url_name == 'listJokes' %}active{% endif %}"
+    >Jokes</a
+  >
 </div>

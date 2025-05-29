@@ -7,7 +7,9 @@
   <p>Average rating: {{ meanRating }}</p>
   {% if ownRating %}
   <p>Your rating: {{ ownRating.rating }}</p>
-  {% else %} {% include 'rateJoke.html' with jokeId=joke.id %} {% endif %}
+  {% elif user.is_authenticated %} {% include 'rateJoke.html' with jokeId=joke.id %} {% else %}
+  <p><a href="{% url 'login' %}">Login</a> to leave a rating</p>
+  {% endif %}
 </div>
 <a href="{% url 'listJokes' %}">Back</a>
 {% endblock %}

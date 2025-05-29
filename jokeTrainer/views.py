@@ -1,6 +1,17 @@
 from django.shortcuts import redirect, render
 from .models import Joke, Rating
 from django.db.models import Avg
+from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
+
+
+def ownsJoke(viewFunc):
+    def wrapperFunc(req, *args, **kwargs):
+        jokeId = kwargs['jokeId']
+        joke = Joke.objects.get(id=jokeId)
+        if joke.owner != req.user:
+            return redirect('viewJoke', jokeId=jokeId)
+        return viewFunc(req, *args, **kwargs)
+    return wrapperFunc
 
 
 def listJokes(req):
@@ -10,6 +21,7 @@ def listJokes(req):
     return render(req, 'listJokes.html', {'jokes': jokes})
 
 
+@login_required
 def createJoke(req):
     if req.method == "POST":
         joke = Joke(
@@ -23,16 +35,23 @@ def createJoke(req):
 
 
 def viewJoke(req, jokeId):
+
     joke = Joke.objects.get(id=jokeId)
     ratings = Rating.objects.filter(joke=joke)
     meanRating = sum([r.rating for r in ratings]) / \
         len(ratings) if len(ratings) > 0 else 0
-    ownRating = Rating.objects.filter(
-        joke=joke, owner=req.user
-    ).first()
+
+    ownRating = None
+    if req.user.is_authenticated:
+        ownRating = Rating.objects.filter(
+            joke=joke, owner=req.user
+        ).first()
+
     return render(req, 'viewJoke.html', {'joke': joke, 'meanRating': meanRating, 'ownRating': ownRating})
 
 
+@login_required
+@ownsJoke
 def rateJoke(req, jokeId):
     if req.method == "POST":
         rating = Rating(

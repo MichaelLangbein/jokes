@@ -5,7 +5,10 @@
       gap: 1rem;
       align-items: center;
       a, p {
-      color: var(--white);
+        color: var(--white);
+      }
+      a.active {
+        color: var(--primary-light);
       }
 </style>
 
@@ -14,6 +17,6 @@
   <p>Welcome, {{ user.username }}</p>
   <a href="{% url 'logout' %}">Logout</a>
   {% else %}
-  <a href="{% url 'login' %}">Login</a>
+  <a href="{% url 'login' %}" class="{% if request.resolver_match.url_name == 'login' %}active{% endif %}">Login</a>
   {% endif %}
 </div>
