@@ -6,6 +6,7 @@
     <title>Jokes</title>
     <style>
       * {
+        box-sizing: border-box;
         --dark: darkblue;
         --white: white;
       }
@@ -22,21 +23,12 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-
-        .links {
-          display: flex;
-          a {
-            color: var(--white);
-          }
-        }
       }
     </style>
   </head>
   <body>
     <div class="header">
-      <div class="links">
-        <a href="{% url 'home' %}">Home</a>
-      </div>
+      {% include 'links.html' %}
       {% include 'userLinks.html' %}
     </div>
 

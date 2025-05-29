@@ -20,7 +20,7 @@ def loginUser(request):
 
 def logoutUser(request):
     logout(request)
-    redirect('home')
+    return redirect('home')
 
 
 def homePage(req):
