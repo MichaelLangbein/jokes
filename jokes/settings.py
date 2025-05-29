@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'jokeTrainer.apps.JoketrainerConfig',
-    'flashCards.apps.FlashcardsConfig'
+    'flashCards.apps.FlashcardsConfig',
+    'economics.apps.EconomicsConfig',
 ]
 
 MIDDLEWARE = [
