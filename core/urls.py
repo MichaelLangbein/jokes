@@ -19,5 +19,5 @@ from .views import startPage
 
 urlpatterns = [
     path('', startPage),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('users/', include('django.contrib.auth.urls')),
 ]

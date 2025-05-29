@@ -2,4 +2,4 @@ from django.shortcuts import render
 
 
 def startPage(req):
-    return render(req, 'startPage.html')
+    return render(req, 'baseLayout/startPage.html')
