@@ -1,9 +1,18 @@
 {% extends "baseLayout.html" %} {% block content %}
 <h1>Jokes</h1>
-<div>
+<table>
+  <tr>
+    <th>Setup</th>
+    <th>Mean rating</th>
+    <th>Link</th>
+  </tr>
   {% for joke in jokes%}
-  <a href="{% url 'viewJoke' jokeId=joke.id     %}">{{joke.setup}} ...</a>
+  <tr>
+    <td>{{ joke.setup }}</td>
+    <td>{{ joke.meanRating }}</td>
+    <td><a href="{% url 'viewJoke' jokeId=joke.id %}">read</a></td>
+  </tr>
   {% endfor %}
-</div>
+</table>
 <a href="{% url 'createJoke' %}">Create joke</a>
 {% endblock %}

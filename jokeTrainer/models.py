@@ -7,6 +7,9 @@ class Rating(models.Model):
     joke = models.ForeignKey('jokeTrainer.Joke', on_delete=models.CASCADE)
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ('joke', 'owner')  # A user can only rate a joke once
+
     def __str__(self):
         return str(self.rating) + "_" + str(self.joke)[:10]
 

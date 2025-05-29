@@ -1,0 +1,8 @@
+<form action="{% url 'rateJoke' jokeId %}" method="POST">
+  {% csrf_token %}
+  <div>
+    <label for"rating">
+    <input type="number" name="rating" />
+  </div>
+  <input type="submit" value="OK" />
+</form>

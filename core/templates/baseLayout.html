@@ -9,11 +9,32 @@
         box-sizing: border-box;
         font-family: Calibri, Helvetica, sans-serif;
         --dark: darkblue;
+        --gray: #dddddd;
         --white: white;
+        --shade: rgba(0, 0, 0, 0.15);
       }
 
       body {
         margin: 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        min-width: 400px;
+        box-shadow: 0 0 20px var(--shade);
+        margin: 1rem 0 1rem 0;
+
+        th {
+          text-align: start;
+        }
+
+        tr {
+          border-bottom: 1px solid var(--gray);
+        }
+
+        tr:nth-of-type(even) {
+          background-color: #f3f3f3;
+        }
       }
 
       .header {
@@ -24,6 +45,11 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+      }
+
+      .content {
+        width: clamp(600px, 80%, 1000px);
+        margin: auto;
       }
     </style>
   </head>
@@ -43,6 +69,8 @@
     {% endif %}
     </div>
 
-    {% block content %}Placeholder content{% endblock %}
+    <div class="content">
+      {% block content %}Placeholder content{% endblock %}
+    </div>
   </body>
 </html>

@@ -5,6 +5,9 @@
 </div>
 <div>
   <p>Average rating: {{ meanRating }}</p>
+  {% if ownRating %}
+  <p>Your rating: {{ ownRating.rating }}</p>
+  {% else %} {% include 'rateJoke.html' with jokeId=joke.id %} {% endif %}
 </div>
 <a href="{% url 'listJokes' %}">Back</a>
 {% endblock %}
