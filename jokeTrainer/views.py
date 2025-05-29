@@ -63,3 +63,19 @@ def rateJoke(req, jokeId):
         return redirect('viewJoke', jokeId=jokeId)
     else:
         return redirect('viewJoke', jokeId=jokeId)
+
+
+def jokeRoulette(req):
+    randomJoke = Joke.objects.order_by('?').first()
+
+    ratings = Rating.objects.filter(joke=randomJoke)
+    meanRating = sum([r.rating for r in ratings]) / \
+        len(ratings) if len(ratings) > 0 else 0
+
+    ownRating = None
+    if req.user.is_authenticated:
+        ownRating = Rating.objects.filter(
+            joke=randomJoke, owner=req.user
+        ).first()
+
+    return render(req, 'jokeRoulette.html', {'joke': randomJoke, 'meanRating': meanRating, 'ownRating': ownRating})
