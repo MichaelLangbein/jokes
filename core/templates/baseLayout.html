@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jokes</title>
+    <style>
+      * {
+        --dark: darkblue;
+        --white: white;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .header {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: var(--dark);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .links {
+          display: flex;
+          a {
+            color: var(--white);
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="links">
+        <a href="{% url 'home' %}">Home</a>
+      </div>
+      {% include 'userLinks.html' %}
+    </div>
+
+    <div class="messageContainer">
+    {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+    {% endif %}
+    </div>
+
+    {% block content %}Placeholder content{% endblock %}
+  </body>
+</html>
+l

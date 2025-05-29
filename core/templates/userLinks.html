@@ -1,0 +1,16 @@
+<style>
+  .logins {
+      display: flex;
+      a, p {
+      color: var(--white);
+      }
+</style>
+
+<div class="logins">
+  {% if user.is_authenticated %}
+  <p>Welcome, {{ user.username }}</p>
+  <a href="{% url 'logout' %}">Logout</a>
+  {% else %}
+  <a href="{% url 'login' %}">Login</a>
+  {% endif %}
+</div>
